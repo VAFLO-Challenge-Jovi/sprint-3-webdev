@@ -5,17 +5,13 @@ const ACCENTS = {
   iris: 'bg-iris-500 text-white',
 };
 
-export default function TeamCard({ name, rm, role, bio, accent = 'volt' }) {
+export default function TeamCard({ name, rm, accent = 'volt' }) {
   return (
     <article className="flex h-full flex-col gap-4 rounded-3xl border border-white/8 bg-ink-850 p-6 transition hover:-translate-y-1 hover:border-white/20">
       <div className={`grid size-14 place-items-center rounded-2xl font-display text-lg font-bold ${ACCENTS[accent]}`} aria-hidden="true">
         {initials(name)}
       </div>
-      <div>
-        <h3 className="text-lg leading-tight font-bold">{name}</h3>
-        <p className="mt-1 text-sm font-semibold text-volt-300">{role}</p>
-      </div>
-      <p className="text-sm text-fg-muted">{bio}</p>
+      <h3 className="text-lg leading-tight font-bold">{name}</h3>
       <p className="mt-auto font-mono text-xs text-fg-subtle">{rm}</p>
     </article>
   );

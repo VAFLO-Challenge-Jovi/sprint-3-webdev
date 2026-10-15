@@ -69,13 +69,12 @@ export const GALLERY = [
   { src: result, alt: 'Tela do celular com o resultado da pesquisa sobre o livro', caption: 'Resultado encontrado', step: '04', device: 'phone' },
 ];
 
-/** Roles follow the Sprint 4 work split — confirm with the team. */
 export const TEAM = [
-  { name: 'Artur Fabi Brandi', rm: 'RM570258', role: 'Tech Lead · React & Rotas', bio: 'Arquitetura do app, autenticação e deploy na Vercel.' },
-  { name: 'Felipe Santos Ribas', rm: 'RM569121', role: 'UI Designer · Tailwind', bio: 'Design system, componentes de interface e responsividade.' },
-  { name: 'Luiz Gonzaga', rm: 'RM572446', role: 'Front-end · Landing Page', bio: 'Seções da landing page, conteúdo e acessibilidade.' },
-  { name: 'Orion Cavalcante França', rm: 'RM573677', role: 'Integrações · APIs', bio: 'MockAPI, Wikipédia, Google Books e Open Library.' },
-  { name: 'Victor Lula Heineken Rodrigues', rm: 'RM570782', role: 'Front-end · Scanner & IA', bio: 'OCR, câmera e fluxo de análise inteligente.' },
+  { name: 'Artur Fabi Brandi', rm: 'RM570258' },
+  { name: 'Felipe Santos Ribas', rm: 'RM569121' },
+  { name: 'Luiz Gonzaga', rm: 'RM572446' },
+  { name: 'Orion Cavalcante França', rm: 'RM573677' },
+  { name: 'Victor Lula Heineken Rodrigues', rm: 'RM570782' },
 ];
 
 export const CONTACT = {

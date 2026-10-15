@@ -34,13 +34,13 @@ fontes** (Wikipédia, Google Books e Open Library), tudo salvo e organizado por 
 
 ## Integrantes
 
-| Nome | RM | Papel na Sprint 4 |
-|---|---|---|
-| Artur Fabi Brandi | RM570258 | Tech Lead · React & Rotas |
-| Felipe Santos Ribas | RM569121 | UI Designer · Tailwind |
-| Luiz Gonzaga | RM572446 | Front-end · Landing Page |
-| Orion Cavalcante França | RM573677 | Integrações · APIs |
-| Victor Lula Heineken Rodrigues | RM570782 | Front-end · Scanner & IA |
+| Nome | RM |
+|---|---|
+| Artur Fabi Brandi | RM570258 |
+| Felipe Santos Ribas | RM569121 |
+| Luiz Gonzaga | RM572446 |
+| Orion Cavalcante França | RM573677 |
+| Victor Lula Heineken Rodrigues | RM570782 |
 
 ---
 
