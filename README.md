@@ -1,54 +1,92 @@
-# SeekVision — OCR Inteligente para Estudantes (React)
+# SeekVision — Câmera inteligente para estudantes
 
-Projeto acadêmico desenvolvido para as disciplinas **Web Development** e **Front-End Design** —
-Sprint 3 | FIAP 2026.
+Projeto da **Challenge JOVI 2026 (FIAP)**. Entrega conjunta da **Sprint 4** para as disciplinas
+**Front-End Design** e **Web Development**.
 
-Esta é a migração para **React + Vite** do protótipo entregue na Sprint 2
-(`sprint-2-webdev-front-end/`, HTML/CSS/JS puro). A proposta, o visual e as funcionalidades são os
-mesmos — o que muda é a tecnologia: a interface inteira agora é construída com componentes
-funcionais React, seguindo a estrutura pai → filho (Header/Footer compartilhados, páginas como
-`Home`, `Camera`, `History`, `Login`, cada uma composta por componentes menores).
+O SeekVision transforma a câmera do celular em ferramenta de estudo: reconhece o texto de uma
+lousa, livro ou slide (OCR) e entrega, em um toque, pesquisa, tradução e uma **nota de estudo com
+fontes** (Wikipédia, Google Books e Open Library), tudo salvo e organizado por tema.
+
+> A Sprint 4 é a **evolução dos dois projetos da Sprint 3**: a landing page de Front-End Design
+> (HTML + CSS Grid) e o app React de Web Development. Os dois foram unificados neste repositório, migrados
+> para **React + Tailwind CSS** e **redesenhados do zero**, a partir do feedback do professor e de
+> referências do Dribbble.
+
+---
+
+## ⚡ Como avaliar em 1 minuto
+
+| | |
+|---|---|
+| **Deploy (Vercel)** | https://sprint-3-webdev-tan.vercel.app/ |
+| **Repositório** | https://github.com/VAFLO-Challenge-Jovi/sprint-3-webdev |
+| **Usuário de teste** | `aluno@seekvision.com` |
+| **Senha** | `seek1234` |
+
+1. Abra o deploy → landing page pública (A Solução, Público-Alvo, Galeria, Nossa Equipe, Contato).
+2. Clique em **Testar agora**. Como a rota é privada, você será levado ao login.
+3. Clique em **Usar conta de teste** → **Entrar**.
+4. No **Scanner**, clique em **Gerar nota com IA** (consulta a Wikipédia e as bases de livros em tempo
+   real) ou **Enviar imagem** para testar o OCR real com qualquer foto de texto.
+5. Veja **Histórico** (busca e conversa com o assistente) e **Perfil** (estatísticas de uso).
+
+---
 
 ## Integrantes
 
-| Nome                           | RM       |
-| ------------------------------ | -------- |
-| Artur Fabi Brandi              | RM570258 |
-| Felipe Santos Ribas            | RM569121 |
-| Luiz Gonzaga                   | RM572446 |
-| Orion Cavalcante França        | RM573677 |
-| Victor Lula Heineken Rodrigues | RM570782 |
+| Nome | RM | Papel na Sprint 4 |
+|---|---|---|
+| Artur Fabi Brandi | RM570258 | Tech Lead · React & Rotas |
+| Felipe Santos Ribas | RM569121 | UI Designer · Tailwind |
+| Luiz Gonzaga | RM572446 | Front-end · Landing Page |
+| Orion Cavalcante França | RM573677 | Integrações · APIs |
+| Victor Lula Heineken Rodrigues | RM570782 | Front-end · Scanner & IA |
 
-## Sobre o projeto
+---
 
-**SeekVision** é uma aplicação web que simula a integração entre câmera e ferramentas de pesquisa,
-utilizando OCR (Reconhecimento Óptico de Caracteres) para identificar textos em imagens. O
-objetivo é reduzir as etapas no processo de pesquisa de informações para estudantes
-universitários, transformando a câmera em uma ferramenta ativa de aprendizado.
+## Funcionalidades
 
-### Funcionalidades
+**Área pública**
+- **Landing page** com menu: A Solução (bento grid de funcionalidades), Como funciona,
+  Público-Alvo (persona), Galeria (carrossel com swipe, setas do teclado e autoplay), Nossa Equipe e
+  Contato (formulário validado que envia para a API).
+- **Login e cadastro** com validação, medidor de força de senha e atalho para a conta de teste.
 
-- **Scanner OCR** — exibe uma imagem padrão com detecção simulada de texto, efeito de varredura e typewriter
-- **Upload de imagem** — envio de qualquer imagem via seleção de arquivo ou arrastar e soltar
-- **Pesquisar no Google** — abre a pesquisa com o texto detectado em um clique
-- **Copiar texto** — copia o conteúdo reconhecido para a área de transferência
-- **Traduzir** — abre o Google Tradutor com o texto detectado
-- **Histórico de scans** — persiste os textos detectados no `localStorage` (via hook próprio) com opção de restaurar ou limpar
-- **Análise com IA mock** — simula OCR, pesquisa, leitura de resultados e resumo sem APIs externas
-- **Histórico inteligente** — página separada com temas, subabas, detalhes e conversa mock com IA
-- **Slideshow** — carrossel automático com 4 slides, navegação manual, suporte a swipe e teclado
-- **Login e cadastro** — formulários com validação completa no cliente (e-mail, senha, força de senha, confirmação)
+**Área privada (exige login)**
+- **Scanner OCR**
+  - OCR **real** no navegador com Tesseract.js (português + inglês), com barra de progresso.
+  - Envio de imagem (botão ou arrastar e soltar) ou **câmera ao vivo** (webcam/celular), com captura.
+  - Ações rápidas: pesquisar no Google, traduzir, copiar e salvar no histórico.
+  - **Gerar nota com IA**: busca o texto na Wikipédia, Google Books e Open Library, filtra só os
+    resultados relevantes e monta uma nota de estudo (resumo, pontos-chave, fontes e livros
+    relacionados). Tem modo offline se as APIs estiverem fora do ar.
+- **Histórico**: notas e textos agrupados por tema, busca geral e assistente de estudo
+  ("Conversar com IA": resumo, perguntas de prática e plano de revisão).
+- **Perfil**: dados da conta, estatísticas (itens salvos, notas, últimos 7 dias, média de
+  caracteres), gráfico de atividade semanal e distribuição por categoria.
+
+---
 
 ## Tecnologias utilizadas
 
-- **React 19** (componentes funcionais, hooks)
-- **Vite** (build tool e dev server)
-- **React Router DOM** (rotas: `/`, `/camera`, `/history`, `/login`)
-- CSS puro (arquivo único global, portado do design system da Sprint 2 — sem frameworks CSS)
-- `localStorage` para persistência de sessão e histórico
-- Sem backend — toda a "IA" é simulada em `src/services/mockKnowledgeAI.js`
+- **React 19** (componentes funcionais, props, hooks nativos e hooks customizados)
+- **Vite 8** (build e servidor de desenvolvimento)
+- **React Router 7** (rotas públicas e privadas)
+- **Tailwind CSS 4** (via `@tailwindcss/vite`, com tokens de design em `@theme`)
+- **Tesseract.js 7** (OCR no navegador, carregado sob demanda)
+- **lucide-react** (ícones) e **Fontsource** (fontes Inter e Bricolage Grotesque, sem CDN)
+- **APIs consumidas**:
+  - [MockAPI.io](https://mockapi.io): API mockada com os recursos `users`, `scans` e `messages`
+  - [Wikipedia REST API](https://pt.wikipedia.org/api/rest_v1/): API pública de terceiros
+  - [Google Books API](https://developers.google.com/books): API pública de terceiros
+  - [Open Library Search API](https://openlibrary.org/dev/docs/api/search): API pública de terceiros, usada quando o Google Books falha
+- **Vercel** (deploy) e **oxlint** (lint)
+
+---
 
 ## Como instalar as dependências
+
+Pré-requisito: **Node.js 20+** (testado com Node 22).
 
 ```bash
 npm install
@@ -57,98 +95,211 @@ npm install
 ## Como executar o projeto
 
 ```bash
+cp .env.example .env   # opcional (veja "Back-end / API" abaixo)
 npm run dev
 ```
 
-O terminal mostrará a URL local (por padrão `http://localhost:5173`). Abra no navegador.
+Acesse a URL exibida no terminal (padrão `http://localhost:5173`).
 
-Para gerar a build de produção:
+Outros comandos:
 
 ```bash
-npm run build
-npm run preview   # opcional, serve a build gerada localmente
+npm run build     # build de produção em dist/
+npm run preview   # serve a build localmente
+npm run lint      # oxlint
+npm run seed      # cria o usuário de teste e scans de exemplo no MockAPI
 ```
 
-## Usuários e senha para teste
+> A câmera ao vivo exige **HTTPS ou localhost**: funciona no `npm run dev` e no deploy da Vercel.
 
-Não há usuário fixo/seed. O login é 100% client-side: a tela `/login` permite **criar uma conta**
-(aba "Criar conta") com qualquer nome, e-mail e senha (mínimo 6 caracteres) — os dados ficam
-salvos apenas no `localStorage` do próprio navegador. Depois disso, use esse mesmo e-mail/senha na
-aba "Entrar" para testar o fluxo de login. Não há verificação de senha contra um backend: qualquer
-combinação de e-mail válido + senha com 6+ caracteres é aceita no login.
+---
 
-## Onde e como a IA foi utilizada no projeto
+## Back-end / API (como executar os servidores)
 
-A migração deste projeto de HTML/CSS/JS puro (Sprint 2) para React (Sprint 3) foi feita com o
-auxílio do **Claude Code**: a IA leu o protótipo original da Sprint 2 e os requisitos da Sprint 3
-(documento do Challenge), e a partir disso gerou a estrutura inicial de componentes, hooks
-(`useLocalStorage`, `useToast`) e rotas React que reproduzem fielmente as telas e o comportamento
-já existentes. A equipe revisou o resultado gerado.
+**Não há servidor próprio para rodar.** O back-end é uma **API mockada no MockAPI.io**, acessada
+pela URL em `VITE_MOCKAPI_URL`.
 
-Importante: isso é diferente da funcionalidade "Analisar com IA" **dentro do produto** — aquela é
-uma simulação (mock) de um fluxo de IA para fins do protótipo, implementada em
-`src/services/mockKnowledgeAI.js`, e não faz nenhuma chamada a uma API de IA real.
+- **Sem configurar nada**, o app funciona do mesmo jeito: um adaptador local
+  (`src/services/api/localAdapter.js`) implementa a mesma interface REST sobre o `localStorage`, com
+  latência simulada. O usuário de teste já vem criado.
+- **Para usar o MockAPI:**
+  1. Crie um projeto em https://mockapi.io com os recursos `users`, `scans` e, opcionalmente,
+     `messages` (se o plano gratuito não permitir o terceiro recurso, o formulário de contato salva
+     localmente).
+  2. Copie a URL base (ex.: `https://xxxxxx.mockapi.io/api/v1`) para `VITE_MOCKAPI_URL` no `.env`.
+  3. Rode `npm run seed` para criar o usuário de teste e scans de exemplo.
+  4. Na Vercel, cadastre a mesma variável em *Settings → Environment Variables*.
 
-## Deploy
+| Variável | Obrigatória | Descrição |
+|---|---|---|
+| `VITE_MOCKAPI_URL` | Não | URL base do MockAPI. Sem ela, o app usa o adaptador local. |
+| `VITE_GOOGLE_BOOKS_API_KEY` | Não | Chave gratuita da Google Books API. Sem ela, a cota anônima costuma estar esgotada e o app usa a Open Library automaticamente. |
 
-**Pendente.** O deploy na Vercel não foi feito nesta etapa — está planejado para uma próxima
-entrega. Por ora, o projeto deve ser avaliado rodando localmente com `npm install && npm run dev`.
+**Recursos da API**
+
+| Recurso | Campos | Uso |
+|---|---|---|
+| `users` | `name`, `email`, `passwordHash`, `createdAt` | cadastro e login |
+| `scans` | `userId`, `kind` (`ocr`/`analysis`), `text`, `title`, `category`, `summary`, `keyPoints`, `sources`, `books`, `createdAt` | histórico do usuário |
+| `messages` | `name`, `email`, `subject`, `message`, `createdAt` | formulário de contato |
+
+> As senhas são salvas como hash SHA-256, nunca em texto puro. Como é um projeto acadêmico sem
+> back-end próprio, a verificação acontece no navegador; um produto real usaria um servidor com
+> autenticação via token.
+
+---
+
+## Usuários e senhas para teste
+
+| E-mail | Senha |
+|---|---|
+| `aluno@seekvision.com` | `seek1234` |
+
+Também é possível criar uma conta nova na aba **Criar conta**.
+
+---
+
+## Rotas
+
+| Rota | Acesso | Página |
+|---|---|---|
+| `/` | Pública | Landing page (`#solucao`, `#publico-alvo`, `#galeria`, `#equipe`, `#contato`) |
+| `/login` | Pública (só para quem não está logado) | Login / Criar conta (`?tab=cadastro`) |
+| `/app/scanner` | **Privada** | Scanner OCR |
+| `/app/historico` | **Privada** | Histórico por temas |
+| `/app/perfil` | **Privada** | Perfil e estatísticas |
+| `/camera`, `/history` | — | Redirecionam para as novas rotas (URLs da Sprint 3) |
+| `*` | Pública | Página 404 |
+
+Quem tenta acessar uma rota privada sem login é levado para `/login?redirect=…` e, depois de
+entrar, volta para a página que queria (`src/routes/PrivateRoute.jsx` e `PublicOnlyRoute.jsx`).
+
+---
 
 ## Organização do projeto
 
 ```
-/
 ├── index.html
-├── INTEGRANTES.TXT
-├── README.md
-├── package.json
-│
+├── vercel.json                  # rewrite SPA (refresh em /app/... não dá 404)
+├── .env.example
+├── scripts/seed-mockapi.mjs     # popula o MockAPI
 └── src/
-    ├── main.jsx                    # Entry point, monta <App /> dentro de <BrowserRouter>
-    ├── App.jsx                     # Definição das rotas (react-router-dom)
-    │
-    ├── assets/imgs/                # Imagens usadas no slideshow e no scanner
-    │
-    ├── styles/
-    │   └── global.css              # Estilos globais (portado 1:1 do design system da Sprint 2)
-    │
-    ├── context/
-    │   └── ToastContext.jsx        # Provider + hook de notificações toast (substitui showToast global)
-    │
-    ├── hooks/
-    │   └── useLocalStorage.js      # Hook genérico de estado sincronizado com localStorage
-    │
+    ├── main.jsx                 # BrowserRouter + AuthProvider + ToastProvider
+    ├── App.jsx                  # tabela de rotas (públicas e privadas)
+    ├── index.css                # Tailwind + tokens de design (@theme)
+    ├── routes/                  # PrivateRoute, PublicOnlyRoute
+    ├── context/                 # AuthContext, ToastContext
+    ├── hooks/                   # 👉 toda a lógica (ver tabela abaixo)
     ├── services/
-    │   └── mockKnowledgeAI.js      # Service mock de análise por imagem e histórico inteligente
-    │
-    ├── utils/
-    │   └── format.js               # formatDate, truncate, relativeTime (Math.round/floor), cleanUserText
-    │
+    │   ├── api/                 # MockAPI (httpAdapter) | localStorage (localAdapter) | seed
+    │   ├── booksApi.js          # Google Books → Open Library
+    │   ├── wikipediaApi.js      # Wikipedia search + summary
+    │   ├── ocr.js               # Tesseract.js
+    │   ├── studyNotes.js        # monta a nota (relevância, categoria, fontes)
+    │   ├── studyAssistant.js    # respostas do assistente de estudo
+    │   └── mockKnowledgeAI.js   # modo offline
+    ├── data/                    # conteúdo estático (landing, equipe, base de estudos)
     ├── components/
-    │   ├── layout/                 # Header (navbar + menu mobile), Footer, MainLayout
-    │   ├── ToastContainer.jsx
-    │   ├── ConfirmModal.jsx
-    │   ├── home/                   # Slideshow, FeatureCard, StepItem
-    │   ├── auth/                   # LoginForm, RegisterForm
-    │   ├── camera/                 # CameraViewfinder, OcrResultPanel, ScanHistoryPanel, AiAnalysisDrawer, TipsCard
-    │   └── history/                # TopicList, NodeList, DetailPanel, TopicChatDrawer
-    │
-    └── pages/
-        ├── Home.jsx                 # "/"
-        ├── Camera.jsx                # "/camera"
-        ├── History.jsx               # "/history"
-        └── Login.jsx                  # "/login"
+    │   ├── ui/                  # Button, Badge, Card, TextField, Modal, Drawer, ScanFrame…
+    │   ├── layout/              # SiteHeader, SiteFooter, PublicLayout, AppLayout
+    │   ├── landing/             # Hero, Solucao, ComoFunciona, PublicoAlvo, Galeria, Equipe, Contato…
+    │   ├── auth/                # LoginForm, RegisterForm, PasswordStrength
+    │   ├── scanner/             # Viewfinder, ResultPanel, RecentScans, AiDrawer, TipsCard
+    │   ├── knowledge/           # TopicList, NodeList, DetailPanel, NoteCard, ChatDrawer
+    │   └── profile/             # StatTile, WeekActivity, CategoryBreakdown
+    └── pages/                   # Landing, Login, Scanner, Historico, Perfil, NotFound
 ```
 
-## Deploy na Vercel
-https://sprint-3-webdev-tan.vercel.app/
+### Hooks customizados (lógica separada da interface)
 
-## Requisitos cumpridos (Sprint 3 — Web Development)
+As páginas e os componentes só fazem a renderização e chamam hooks; requisições, `localStorage`,
+timers e regras ficam em `src/hooks/` e `src/services/`.
 
-- [x] Migração do protótipo HTML/CSS/JS da Sprint 2 para **React**, com componentes funcionais e imports
-- [x] Estrutura de componentes pai → filho (Header/Footer compartilhados; páginas compostas por componentes menores)
-- [x] `localStorage` para armazenamento de dados (sessão de login, histórico de scans, histórico de análises IA), via hook próprio
-- [x] Operações com `Math`: `Math.random` (duração simulada do scan), `Math.abs` (detecção de swipe) e `Math.round`/`Math.floor` (tempo relativo no histórico, em `utils/format.js`)
-- [x] Projeto versionado no GitHub (herda o repositório já existente da Sprint 2)
-- [x] README com tecnologias, instalação, execução, usuário de teste e uso de IA
-- [ ] Deploy na Vercel — pendente (fora do escopo desta entrega)
+| Hook | Responsabilidade |
+|---|---|
+| `useAuth` | sessão, login, cadastro e logout (via `AuthContext`) |
+| `useAsync` | carregamento assíncrono com `loading` / `error` / `reload` |
+| `useScans` | CRUD dos scans do usuário na API, com atualização otimista |
+| `useOcrScan` | fluxo do scanner: imagem → OCR → efeito de digitação → texto |
+| `useCameraStream` | câmera ao vivo (`getUserMedia`) e captura de frame |
+| `useAiAnalysis` | etapas da análise (Wikipédia + livros), nota gerada e salvamento |
+| `useKnowledgeTree` | árvore de temas, navegação e busca do histórico |
+| `useTopicChat` | conversa com o assistente de estudo |
+| `useScanStats` | estatísticas do perfil (`useMemo`, `Math.round`) |
+| `useForm` / `useContactForm` | formulários com validação; envio do contato para a API |
+| `useCarousel` | carrossel: índice, autoplay, swipe e teclado |
+| `useScrollSpy` / `useHashScroll` | menu ativo e rolagem até a âncora na landing |
+| `useTypewriter`, `useClipboard`, `useLockBodyScroll`, `useDocumentTitle`, `useLocalStorage`, `useToast` | utilitários |
+
+Hooks nativos usados: `useState`, `useEffect`, `useRef`, `useMemo`, `useCallback`, `useContext`,
+`useId` e `startTransition`.
+
+---
+
+## Design (Sprint 4)
+
+O professor avaliou que o visual da Sprint 3 estava fraco, então a interface foi **redesenhada**. As
+referências vieram do Dribbble: landing pages escuras com *bento grid*, o app de estudos *ESTUDEE*
+(dark mode), UIs de scanner com IA e landings voltadas à Geração Z.
+
+- **Paleta**: base escura "ink" (`#07080F`), **volt** `#C6F432` para as ações de scan e as
+  principais, **iris** `#7C5CFF` para IA e destaques.
+- **Tipografia**: *Bricolage Grotesque* (títulos) e *Inter* (texto).
+- **Assinatura visual**: cantos de enquadramento de câmera (`ScanFrame`) e linha de varredura animada.
+- **Layout**: **CSS Grid** com utilitários do Tailwind (`grid-cols-*`, `col-span-*`, `row-span-*`,
+  `grid-flow-dense`) e HTML semântico (`header`, `nav`, `main`, `section`, `article`, `figure`,
+  `footer`).
+- **Responsivo**: mobile-first, com breakpoints `sm` (640px), `md` (768px, tablet) e `lg`
+  (1024px, desktop). No celular, o app usa uma barra de abas inferior. Testado em 390px, 820px e
+  1440px sem rolagem horizontal.
+- **Acessibilidade**: foco visível, `aria-*` nos componentes interativos, link "pular para o
+  conteúdo" e suporte a `prefers-reduced-motion`.
+
+---
+
+## Requisitos atendidos
+
+**Front-End Design + Web Development (comuns)**
+- [x] Integração do projeto da Sprint 3 ao **React**: a landing de Front-End e o app de WebDev agora são um único app
+- [x] **Tailwind CSS** em toda a estilização (o CSS antigo, de 1.900+ linhas, foi removido)
+- [x] **Responsividade** para Desktop, Tablet e Mobile
+- [x] **Deploy** com Git + Vercel (`vercel.json` com rewrite para as rotas do React)
+- [x] README com tecnologias, instalação, execução, servidores, usuário de teste e link do deploy
+- [x] `INTEGRANTES.TXT` na raiz
+
+**Web Development**
+- [x] Componentização com **props** (pai → filho), por exemplo `Solucao → FeatureCard` e `Equipe → TeamCard`
+- [x] **Rotas públicas e privadas** (`PrivateRoute`, `PublicOnlyRoute`)
+- [x] **Hooks nativos** e **hooks customizados** separando a lógica da interface (`src/hooks/`)
+- [x] **Consumo de API**: mockada (MockAPI) e públicas de terceiros (Wikipedia, Google Books, Open Library)
+- [x] Parágrafo sobre o uso de IA (abaixo)
+
+---
+
+## Onde e como a IA foi utilizada no projeto
+
+A equipe usou o **Claude Code** (assistente de programação da Anthropic) como apoio na Sprint 4.
+A IA leu os requisitos do Challenge e os dois projetos da Sprint 3, e ajudou a montar o plano de
+unificação (`SPRINT-4-PLAN.md`). Também implementou boa parte da migração: a configuração do
+Tailwind e dos tokens do redesign, a reorganização da lógica em hooks customizados, as rotas
+privadas, a integração com MockAPI, Wikipédia, Google Books e Open Library, o OCR com Tesseract.js
+(a partir do teste que a equipe já tinha feito em uma branch) e o rascunho deste README. A IA também
+rodou testes de ponta a ponta no navegador e corrigiu os problemas encontrados (overflow no
+celular, logout, relevância das fontes). A equipe definiu a direção do design com base no feedback
+do professor e nas referências do Dribbble, revisou o código gerado e validou o funcionamento.
+
+Importante: a "IA" **dentro do produto** não é um modelo de linguagem. A nota de estudo é montada a
+partir de dados reais da Wikipédia e das bases de livros, por regras de relevância
+(`src/services/studyNotes.js`), e o assistente de estudo usa respostas baseadas em regras
+(`src/services/studyAssistant.js`).
+
+---
+
+## Entrega
+
+```bash
+git archive --format=zip -o SeekVision-Sprint4.zip HEAD
+```
+
+O ZIP inclui código-fonte, `README.md`, `INTEGRANTES.TXT` e os demais arquivos necessários
+(sem `node_modules` e `dist`). Para conferir, descompacte em uma pasta limpa e rode `npm install && npm run dev`.
